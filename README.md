@@ -1,5 +1,7 @@
 # vue drag tree table
 
+> 基于 [vue-drag-tree-table](https://github.com/mafengwo/vue-drag-tree-table) 修改
+
 IE10+/Chrome/firefox
 
 ## 请更新到```2.0.8```及以上版本 [在线DEMO](https://mofazhuan.com/vue-drag-tree-table-demo#/)
