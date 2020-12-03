@@ -1,10 +1,9 @@
 # vue drag tree table
 
-> 基于 [vue-drag-tree-table](https://github.com/mafengwo/vue-drag-tree-table) 修改
+> 这个项目基于 [vue-drag-tree-table](https://github.com/mafengwo/vue-drag-tree-table) 作增强，如支持树编辑等。
 
 IE10+/Chrome/firefox
 
-## 请更新到```2.0.8```及以上版本 [在线DEMO](https://mofazhuan.com/vue-drag-tree-table-demo#/)
 > 基于vue实现的可以拖拽排序的树形表格  
 
 支持拖拽排序、固定头、拖拽改变行宽，checkbox多选、自定义单元格内容、设置行的背景色、动态控制某些行是否可以拖拽等等....
@@ -298,5 +297,4 @@ custom_field: {
 }
 ```
 
-[更新日志-CHANGELOG](CHANGELOG.md 'vue-drag-tree-table')
 
