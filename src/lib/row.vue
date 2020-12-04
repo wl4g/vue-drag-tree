@@ -2,12 +2,12 @@
         <div class="tree-block" :draggable="!!isdraggable" @dragstart="dragstart($event)"
             @dragend="dragend($event)">
             <div class="tree-row"
-                @click="toggle" 
+                @click="toggle"
                 :data-level="depth"
                 :tree-id="model[custom_field.id]"
                 :tree-p-id="model[custom_field.parent_id]"
                 :class="{'highlight-row': model.highlight == true}"
-                v-bind:style="{backgroundColor: model.backgroundColor}"> 
+                v-bind:style="{backgroundColor: model.backgroundColor}">
                 <column
                     v-for="(subItem, subIndex) in columns"
                     v-bind:class="['align-' + subItem.align, 'colIndex' + subIndex]"
@@ -16,21 +16,35 @@
                     :flex="subItem.flex"
                     :border="border"
                     :key="subIndex">
-                    <span v-if="subItem.type === 'selection'">
+
+                    <div v-if="subItem.type === 'selection'" style="width: 100%; height: 100%;">
+                        <div :style="'box-sizing:border-box;height: 100%;width: 100%;padding-left: '+ 10*depth + 'px'">
+                            <span v-if = "model[custom_field.lists] && model[custom_field.lists].length" class="zip-icon" v-bind:class="[model[custom_field.open] ? 'arrow-bottom' : 'arrow-right']"></span>
+                            <span v-else class="zip-icon arrow-transparent"></span>
+
+                            <span v-if="subItem.formatter" v-html="subItem.formatter(model)"></span>
+                            <el-input v-else-if="subItem.editable" v-model="model[subItem.field]" style="width: calc(100% - 12px)"></el-input>
+                            <span v-else>{{model[subItem.field]}}</span>
+
+                        </div>
+                    </div>
+                    <!--<span v-if="subItem.type === 'selection'" style="">
+
                         <space :depth="depth"/>
                         <span v-if = "model[custom_field.lists] && model[custom_field.lists].length" class="zip-icon" v-bind:class="[model[custom_field.open] ? 'arrow-bottom' : 'arrow-right']">
                         </span>
                         <span v-else class="zip-icon arrow-transparent">
                         </span>
-                        <span v-if="subItem.formatter" v-html="subItem.formatter(model)"></span>
-                        <span v-else v-html="model[subItem.field]"></span>
 
-                    </span>
+                        <el-input v-model="model[subItem.field]" style="display:inline;margin-left: 8px; flex: 1;"></el-input>
+                        &lt;!&ndash;<span v-if="subItem.formatter" v-html="subItem.formatter(model)"></span>
+                        <span v-else v-html="model[subItem.field]"></span>&ndash;&gt;
+                    </span>-->
                     <span v-else-if="subItem.type === 'action'">
                         <a class="action-item"
                             v-for="(acItem, acIndex) in subItem.actions"
                             :key="acIndex"
-                            type="text" size="small" 
+                            type="text" size="small"
                             @click.stop.prevent="acItem.onclick(model)">
                             <i :class="acItem.icon" v-html="acItem.formatter(model)"></i>
                         </a>
@@ -45,6 +59,7 @@
                     </span>
                     <span v-else>
                         <span v-if="subItem.formatter" v-html="subItem.formatter(model)"></span>
+                        <el-input v-else-if="subItem.editable" v-model="model[subItem.field]"></el-input>
                         <span v-else>{{model[subItem.field]}}</span>
                     </span>
                 </column>
@@ -60,12 +75,12 @@
                     </div>
                 </div>
             </div>
-            <row 
+            <row
                 v-show="model[custom_field.open]"
-                v-for="(item, index) in model[custom_field.lists]" 
+                v-for="(item, index) in model[custom_field.lists]"
                 :model="item"
                 :columns="columns"
-                :key="index" 
+                :key="index"
                 :isdraggable="isdraggable"
                 :border="border"
                 :depth="depth * 1 + 1"
@@ -75,7 +90,7 @@
                 v-if="isFolder">
             </row>
         </div>
-        
+
     </template>
     <script>
     import column from './column.vue'
@@ -217,7 +232,7 @@
         visibility: hidden;
     }
     .arrow-right{
-        
+
     }
     .arrow-bottom{
         transform: rotate(90deg)
@@ -226,4 +241,3 @@
       -khtml-user-drag: element;
     }
     </style>
-    

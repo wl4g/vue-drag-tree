@@ -5,6 +5,7 @@
     <button @click="openAll">全部打开</button>
     <button @click="highlight(true)">高亮行</button>
     <button @click="highlight(false)">取消高亮</button>
+
     <dragTreeTable
       ref="table"
       :data="treeData"
@@ -13,15 +14,15 @@
       fixed
       :isdraggable="true">
     </dragTreeTable>
-    <Dialog :onSave="onEdit" ref="editDialog"></Dialog>
-    <Dialog :onSave="onAdd" ref="addDialog"></Dialog>
+    <my-dialog :onSave="onEdit" ref="editDialog"></my-dialog>
+    <my-dialog :onSave="onAdd" ref="addDialog"></my-dialog>
     </div>
   </div>
 </template>
 
 <script>
 import dragTreeTable from "../lib/dragTreeTable.vue";
-import Dialog from "./dialog.vue";
+import myDialog from "./dialog.vue";
 import demoDataList from './data';
 export default {
   name: "app",
@@ -35,7 +36,7 @@ export default {
   },
   components: {
     dragTreeTable,
-    Dialog
+    myDialog
   },
   methods: {
     onTreeDataChange(list) {
@@ -83,9 +84,10 @@ export default {
         width: 200,
         align: "left",
         titleAlign: "left",
-        formatter: item => {
+        editable: true,
+        /*formatter: item => {
           return "<span>" + item.name + "</span>";
-        }
+        }*/
       },
       {
         title: "ID",
@@ -97,7 +99,8 @@ export default {
         title: "链接",
         field: "uri",
         width: 200,
-        align: "center"
+        align: "center",
+        editable: true
       },
       {
         title: "操作",
@@ -123,7 +126,7 @@ export default {
               return "<i>修改子节点 </i>";
             }
           },
-          
+
           {
             text: "删除",
             onclick: this.onDel,

@@ -11,7 +11,7 @@
 <script>
 
 export default {
-  name: "dialog",
+  name: "myDialog",
   data() {
     return {
       visbile: false,

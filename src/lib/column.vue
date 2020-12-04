@@ -32,9 +32,9 @@ export default {
     min-width: 60px;
     text-align: center;
     overflow: hidden;
-    text-overflow: ellipsis;
+    /*text-overflow: ellipsis;
     white-space: nowrap;
-    box-sizing: border-box;
+    box-sizing: border-box;*/
     &.border{
       border-right: 1px solid #eee;
     }
