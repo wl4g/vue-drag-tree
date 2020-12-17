@@ -8,7 +8,7 @@
             :border="border === undefined ? resize : border"
             v-bind:class="['align-' + item.titleAlign, 'colIndex' + index]"
             :key="index" >
-            <input 
+            <input
               v-if="item.type == 'checkbox'"
               class="checkbox"
               type="checkbox"
@@ -61,7 +61,7 @@
       bodyStyle(){
         return {
           overflow: (this.fixed !== undefined && this.fixed !== false) ? 'auto': 'hidden',
-          height: (this.fixed !== undefined && this.fixed !== false) ? (this.height || 400) + 'px' : 'auto'
+          //height: (this.fixed !== undefined && this.fixed !== false) ? (this.height || 400) + 'px' : 'auto'
         }
       }
     },
@@ -138,7 +138,7 @@
       },
       // 查找匹配的行，处理拖拽样式
       filter(x,y) {
-        
+
         var rows = document.querySelectorAll('.tree-row')
         this.targetId = undefined;
         const dragRect = window.dragParentNode.getBoundingClientRect();
@@ -189,7 +189,7 @@
           let whereInsert = '';
           return;
         }
-        
+
         let canDrag = true;
         if (this.beforeDragOver) {
           const curRow = this.getItemById(this.data.lists, window.dragId);
@@ -216,7 +216,7 @@
           }
         }
 
-        
+
         this.targetId = targetId;
         this.whereInsert = whereInsert;
       },
@@ -247,7 +247,7 @@
                 obj.open = true;
                 obj[listKey].push(curDragItem)
                 needPushList.push(obj)
-                
+
               } else {
                 curDragItem[parentIdKey] = item[parentIdKey]
                 needPushList.push(obj)
@@ -302,7 +302,7 @@
         const orderKey = this.custom_field.order
         const idKey = this.custom_field.id
         const newList = [];
-        const curList = this.data.lists;       
+        const curList = this.data.lists;
         function pushData(curList, needPushList) {
           let order = 0;
           for( let i = 0; i < curList.length; i++) {
@@ -496,7 +496,7 @@
             this.isContainChildren = item.isContainChildren;
           }
         })
-      }, 100); 
+      }, 100);
       window.addEventListener('mouseup', e => {
         if (this.mouse.status) {
           const curX = e.clientX;
@@ -509,12 +509,12 @@
           const cols = document.querySelectorAll('.colIndex' + this.mouse.curIndex);
           for (let index = 0; index < cols.length; index++) {
             const element = cols[index];
-            element.style.width = lastWidth + 'px'; 
+            element.style.width = lastWidth + 'px';
           }
           // 更新数据源
           this.data.columns[this.mouse.curIndex].width = lastWidth;
         }
-      });     
+      });
       window.addEventListener('mousemove', e => {
         if (this.mouse.status) {
           const endX = e.clientX;
@@ -522,7 +522,7 @@
           var line = document.querySelector('.drag-line');
           line.style.left = endX - tableLeft + 'px';
         }
-      });     
+      });
     }
   }
 </script>
