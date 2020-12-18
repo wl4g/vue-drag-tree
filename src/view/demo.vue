@@ -113,7 +113,7 @@ export default {
         align: "center",
         editable: true,
         input:{
-          type: 'text', // text | select ...以后拓展(date,开关)
+          type: 'text', // text | select | checkbox ...以后拓展(date,开关)
           selectData: {
             list: [{name: 'aaa',id: '1'},{name: 'bbb',id: '2'}],
             label: 'name',
