@@ -25,9 +25,18 @@
                             <span v-else class="zip-icon arrow-transparent"></span>
 
                             <span v-if="subItem.formatter" v-html="subItem.formatter(model)"></span>
-                            <el-input v-else-if="subItem.editable" v-model="model[subItem.field]" style="width: calc(100% - 12px)"></el-input>
+                            <template v-else-if="subItem.editable">
+                                <el-select v-if="subItem.input && subItem.input.type === 'select'" v-model="model[subItem.field]" style="width:100%" :filterable="true">
+                                    <el-option
+                                            v-for="item in subItem.input.selectData.list"
+                                            :key="item[subItem.input.selectData.value?subItem.input.selectData.value: 'value']"
+                                            :label="item[subItem.input.selectData.label?subItem.input.selectData.label: 'label']"
+                                            :value="item[subItem.input.selectData.value?subItem.input.selectData.value: 'value']">
+                                    </el-option>
+                                </el-select>
+                                <el-input v-else v-model="model[subItem.field]" style="width: calc(100% - 12px)"></el-input>
+                            </template>
                             <span v-else>{{model[subItem.field]}}</span>
-
                         </div>
                     </div>
                     <!--<span v-if="subItem.type === 'selection'" style="">
@@ -61,7 +70,18 @@
                     </span>
                     <span v-else>
                         <span v-if="subItem.formatter" v-html="subItem.formatter(model)"></span>
-                        <el-input v-else-if="subItem.editable" v-model="model[subItem.field]"></el-input>
+                        <template v-else-if="subItem.editable">
+                                <el-select v-if="subItem.input && subItem.input.type === 'select'" v-model="model[subItem.field]" style="width:100%" :filterable="true">
+                                    <el-option
+                                            v-for="item in subItem.input.selectData.list"
+                                            :key="item[subItem.input.selectData.value?subItem.input.selectData.value: 'value']"
+                                            :label="item[subItem.input.selectData.label?subItem.input.selectData.label: 'label']"
+                                            :value="item[subItem.input.selectData.value?subItem.input.selectData.value: 'value']">
+                                    </el-option>
+                                </el-select>
+
+                                <el-input v-else v-model="model[subItem.field]" style="width: calc(100% - 12px)"></el-input>
+                            </template>
                         <span v-else>{{model[subItem.field]}}</span>
                     </span>
                 </column>

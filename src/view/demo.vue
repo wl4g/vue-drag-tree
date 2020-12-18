@@ -95,6 +95,7 @@ export default {
         align: "left",
         titleAlign: "left",
         editable: true,
+
         /*formatter: item => {
           return "<span>" + item.name + "</span>";
         }*/
@@ -110,7 +111,15 @@ export default {
         field: "uri",
         width: 200,
         align: "center",
-        editable: true
+        editable: true,
+        input:{
+          type: 'text', // text | select ...以后拓展(date,开关)
+          selectData: {
+            list: [{name: 'aaa',id: '1'},{name: 'bbb',id: '2'}],
+            label: 'name',
+            value: 'id',
+          }
+        },
       },
       {
         title: "操作",
