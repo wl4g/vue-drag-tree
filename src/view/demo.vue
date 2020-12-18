@@ -78,6 +78,16 @@ export default {
         }
       },
       {
+        title: "Drag",
+        field: "id",
+        width: 100,
+        align: "center",
+        isdraggable: true,
+        formatter: item => {
+          return '<i class="el-icon-rank"></i>';
+        }
+      },
+      {
         type: "selection",
         title: "<a>菜单名称</a>",
         field: "name",
@@ -93,7 +103,7 @@ export default {
         title: "ID",
         field: "id",
         width: 100,
-        align: "center"
+        align: "center",
       },
       {
         title: "链接",

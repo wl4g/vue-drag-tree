@@ -1,5 +1,5 @@
 <template>
-        <div class="tree-block" :draggable="!!isdraggable" @dragstart="dragstart($event)"
+        <div class="tree-block" :draggable="isDraggableCol" @dragstart="dragstart($event)"
             @dragend="dragend($event)">
             <div class="tree-row"
                 @click="toggle"
@@ -15,6 +15,8 @@
                     :width="subItem.width"
                     :flex="subItem.flex"
                     :border="border"
+                    @mouseover="subItem.isdraggable?setColDraggable(subItem.isdraggable):setColDraggable(false)"
+                    @mouseout="setColDraggable(false)"
                     :key="subIndex">
 
                     <div v-if="subItem.type === 'selection'" style="width: 100%; height: 100%;">
@@ -101,7 +103,8 @@
         data() {
             return {
                 open: false,
-                visibility: 'visible'
+                visibility: 'visible',
+                isDraggableCol: false,
             }
         },
         components: {
@@ -121,6 +124,9 @@
                 }
             },
             dragstart(e) {
+
+
+
                 if (navigator.userAgent.indexOf('Firefox') >= 0) {
                     // Firefox drag have a bug
                     e.dataTransfer.setData('Text', this.id);
@@ -152,7 +158,10 @@
                 this.$set(model, 'checked', !!evt.target.checked)
               }
               this.onCheck && this.onCheck()
-            }
+            },
+            setColDraggable(draggable){
+                this.isDraggableCol = draggable
+            },
         }
     }
     </script>
