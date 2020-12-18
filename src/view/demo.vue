@@ -120,6 +120,14 @@ export default {
             value: 'id',
           }
         },
+      },{
+        title: "required",
+        field: "required",
+        align: "center",
+        editable: true,
+        input:{
+          type: 'checkbox', // text | select | checkbox ...以后拓展(date,开关)
+        },
       },
       {
         title: "操作",

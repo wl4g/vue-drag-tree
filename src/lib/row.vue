@@ -35,7 +35,7 @@
                                     </el-option>
                                 </el-select>
 
-                                <el-checkbox v-else-if="subItem.input && subItem.input.type === 'checkbox'" v-model="model[subItem.field]" false-label="0" true-label="1"></el-checkbox>
+                                <el-checkbox v-else-if="subItem.input && subItem.input.type === 'checkbox'" v-model="model[subItem.field]" :false-label="'0'" :true-label="'1'"></el-checkbox>
 
                                 <el-input v-else v-model="model[subItem.field]" style="width: calc(100% - 12px)"></el-input>
                             </template>
@@ -83,7 +83,7 @@
                                     </el-option>
                                 </el-select>
 
-                                <el-checkbox v-else-if="subItem.input && subItem.input.type === 'checkbox'" v-model="model[subItem.field]" :false-label="0" :true-label="1"></el-checkbox>
+                                <el-checkbox v-else-if="subItem.input && subItem.input.type === 'checkbox'" v-model="model[subItem.field]" :false-label="'0'" :true-label="'1'"></el-checkbox>
 
                                 <el-input v-else v-model="model[subItem.field]" style="width: calc(100% - 12px)"></el-input>
                             </template>

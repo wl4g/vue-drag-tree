@@ -13,6 +13,7 @@ const demoDataList =  [
           order: 0,
           name: "联系人",
           uri: "/customer/contacts",
+          required: '1',
           lists: null,
           isShowCheckbox: false,
           highlight: true
@@ -21,6 +22,7 @@ const demoDataList =  [
           id: 173,
           parent_id: 110,
           order: 1,
+          required: '0',
           name: "客户",
           uri: "/customer/customerList",
           lists: null,
@@ -65,7 +67,7 @@ const demoDataList =  [
               uri: "/customer/inquiry",
               lists: null
             }
-          ]              
+          ]
         },
         {
           id: 138,
