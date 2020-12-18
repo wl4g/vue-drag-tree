@@ -1,8 +1,8 @@
 <template>
-    <div @mouseover="mouseover" @mouseleave="mouseout" class="tree-column" v-bind:class="{border: border!== undefined}" v-bind:style="{ width: width + 'px', flex: flex}" v-if="flex">
+    <div @mouseover="mouseover" @mouseleave="mouseout" class="tree-column" v-bind:class="{border: border!== undefined}" v-bind:style="{ width: width + 'px', flex: flex, cursor: isdraggable?'move': ''}" v-if="flex">
       <slot></slot>
     </div>
-    <div @mouseover="mouseover" @mouseleave="mouseout" class="tree-column" v-bind:class="{border: border!== undefined}" v-bind:style="{ width: width + 'px'}" v-else>
+    <div @mouseover="mouseover" @mouseleave="mouseout" class="tree-column" v-bind:class="{border: border!== undefined}" v-bind:style="{ width: width + 'px', cursor: isdraggable?'move': ''}" v-else>
       <slot></slot>
     </div>
 </template>
@@ -15,6 +15,7 @@ export default {
     label: String,
     flex: Number,
     border: String,
+    isdraggable:Boolean,
   },
   data() {
       return {

@@ -15,6 +15,7 @@
                     :width="subItem.width"
                     :flex="subItem.flex"
                     :border="border"
+                    :isdraggable="subItem.isdraggable"
                     @mouseover="subItem.isdraggable?setColDraggable(subItem.isdraggable):setColDraggable(false)"
                     @mouseout="setColDraggable(false)"
                     :key="subIndex">
