@@ -37,7 +37,6 @@ export default {
   .tree-column{
     position: relative;
     /*padding: 12px 12px;*/
-    min-width: 60px;
     text-align: center;
     overflow: hidden;
     /*text-overflow: ellipsis;
