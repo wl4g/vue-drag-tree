@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
   .tree-column{
     position: relative;
-    padding: 12px 12px;
+    /*padding: 12px 12px;*/
     min-width: 60px;
     text-align: center;
     overflow: hidden;
