@@ -59,7 +59,7 @@
                             v-for="(acItem, acIndex) in subItem.actions"
                             :key="acIndex"
                             type="text" size="small"
-                            @click.stop.prevent="acItem.onclick(model)">
+                            @click.stop.prevent="acItem.onclick(model, parentmodel)">
                             <i :class="acItem.icon" v-html="acItem.formatter(model)"></i>
                         </a>
                     </span>
@@ -106,6 +106,7 @@
                 v-show="model[custom_field.open]"
                 v-for="(item, index) in model[custom_field.lists]"
                 :model="item"
+                :parentmodel="model"
                 :columns="columns"
                 :key="index"
                 :isdraggable="isdraggable"
@@ -124,7 +125,7 @@
     import space from './space.vue'
     export default {
       name: 'row',
-        props: ['model','depth','columns','isdraggable','border', 'custom_field','onCheck','isContainChildren'],
+        props: ['model','depth','columns','isdraggable','border', 'custom_field','onCheck','isContainChildren','parentmodel'],
         data() {
             return {
                 open: false,
