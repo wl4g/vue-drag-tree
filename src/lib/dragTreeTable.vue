@@ -13,7 +13,7 @@
               class="checkbox"
               type="checkbox"
               @click="onCheckAll($event, item.onChange)">
-            <span v-else v-html="item.title" @click="item.titleOnClick">
+            <span v-else v-html="item.title" @click="item.titleOnClick? item.titleOnClick() : ()=>{}">
             </span>
             <div class="resize-line" @mousedown="mousedown(index, $event)" v-show="resize!== undefined">
 

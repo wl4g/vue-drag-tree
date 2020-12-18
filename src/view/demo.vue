@@ -102,6 +102,9 @@ export default {
       },
       {
         title: "ID",
+        titleOnClick: () => {
+          console.info("hello");
+        },
         field: "id",
         width: 100,
         align: "center",
